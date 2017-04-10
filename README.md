@@ -1,5 +1,6 @@
 # AprilTag for ISCI Camera
 - This package contains the apriltag detection package under ROS indigo for camera in ISCI lab. Now it can support kinectV2, USB-cam and basler pylon camera
+- For ROS kinetic package, Please check [ISCI-NCTU/apriltags_ros-1](https://github.com/ISCI-NCTU/apriltags_ros-1)
 
 ## Installation
 ```
@@ -14,13 +15,13 @@ catkin_make
 - For running the apriltag detection:
 ```
 roslaunch apriltags_ros usb_camera.launch
-``` 
+```
 
 
 ### 2. KinectV2
 - You need to install the kinectV2 driver : [OpenKinect/libfreenect2](https://github.com/OpenKinect/libfreenect2)
 - And the ROS bridge package [ISCI-NCTU/isci_kinect2](https://github.com/ISCI-NCTU/isci_kinect2)
-- Launch the kinectV2 first : 
+- Launch the kinectV2 first :
 ```
 roslaunch kinect2_bridge kinect_bridge.launch publish_tf:=true
 ```
