@@ -33,10 +33,6 @@ roslaunch apriltags_ros kinectV2.launch
 ### 3. Basler Pylon camera (TM5 camera)
 - You need to install the basler pylon camera driver and ROS package: [ISCI-NCTU/TM5_PylonCamera](https://github.com/ISCI-NCTU/TM5_PylonCamera)
 - You can ```git clone``` the pylon camera package: ```TM5_PylonCamera``` under the same directory: ```workspace/src``` of this package, so that you don't have to ```source ``` the dependancy again.
-- Launch the pylon camera first:
-```
-roslaunch pylon_camera pylon_camera_node.launch
-```
 - Then launch the apriltag detector:
 ```
 roslaunch apriltags_ros pylon_camera.launch
