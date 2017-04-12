@@ -238,9 +238,11 @@ void AprilTagDetector::imageCb(const sensor_msgs::ImageConstPtr& msg, const sens
         tag_pose_array.poses.push_back(tag_pose.pose);
 
         tf::Stamped<tf::Transform> tag_transform;
+		tf::Transform tag_transform_inv;
         tf::poseStampedMsgToTF(tag_pose, tag_transform);
-        tf_pub_.sendTransform(tf::StampedTransform(tag_transform, tag_transform.stamp_, tag_transform.frame_id_, description.frame_name()));
-       // tf_pub_.sendTransform(tf::StampedTransform(tag_transform, tag_transform.stamp_, description.frame_name(), tag_transform.frame_id_));
+		tag_transform_inv = tag_transform.inverse();
+       // tf_pub_.sendTransform(tf::StampedTransform(tag_transform, tag_transform.stamp_, tag_transform.frame_id_, description.frame_name()));
+        tf_pub_.sendTransform(tf::StampedTransform(tag_transform_inv, ros::Time::now(), description.frame_name(), tag_transform.frame_id_));
     }
     detections_pub_.publish(tag_detection_array);
     pose_pub_.publish(tag_pose_array);
