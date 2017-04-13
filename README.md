@@ -1,6 +1,8 @@
 # AprilTag for ISCI Camera
-- This package contains the apriltag detection package under ROS indigo for camera in ISCI lab. Now it can support kinectV2, USB-cam and basler pylon camera
-- For ROS kinetic package, Please check [ISCI-NCTU/apriltags_ros-1](https://github.com/ISCI-NCTU/apriltags_ros-1)
+## Maintainer
+- [Howard Chen](https://github.com/s880367) < s880367@gmail.com >
+, [Intelligent Control System Integration Lab](http://isci.cn.nctu.edu.tw/), NCTU.
+- This package contains the apriltag detection package under ROS indigo for camera in ISCI lab.
 
 ## Installation
 ```
@@ -8,6 +10,21 @@ cd ~/your-ros-workspace/src
 git clone https://github.com/ISCI-NCTU/apriltag_isci.git
 catkin_make
 ```
+## Description
+
+### Highlights
+- Support kinectV2, USB-cam and basler pylon camera
+- For ROS kinetic package, Please check [ISCI-NCTU/apriltags_ros-1](https://github.com/ISCI-NCTU/apriltags_ros-1)
+- Support multiple camera detection on same tag.
+
+### Parameter
+- ```<arg name="camera_name"``` : camera node name
+- ```<arg name="image_view" default="true" />```: pop up the ```tag_detection_image``` whenever you launch
+- ```<arg name="inverse_tf" default="false" />```: inverse the tf broadcast if set to true.
+
+### Dependencies
+- ROS indigo
+
 ## Usage
 
 ### 1. Usb camera
@@ -38,3 +55,12 @@ roslaunch apriltags_ros kinectV2.launch
 roslaunch apriltags_ros pylon_camera.launch
 ```
 - Be noticed of the camera topic name you publish and the name your apriltag detector node subscribe. They should be the same topic name so taht apriltag detector could receieve the image topic which the camera published.
+
+### 4. Multiple camera
+- Set the parameter ```inverse_tf``` true when ```roslaunch ``` to make all the camera become child frame and tag become common parent frame.
+
+```
+roslaunch apriltags_ros usb_camera.launch inverse_tf:=true
+roslaunch apriltags_ros kinectV2.launch inverse_tf:=true
+roslaunch apriltags_ros pylon_camera.launch inverse_tf:=true
+```
