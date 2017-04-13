@@ -7,6 +7,8 @@
     <arg name="publish_tf" default="false" />
     <arg name="image_view" default="true" />
     <arg name="camera_name" default="eye_link" />
+    <arg name="inverse_tf" default="false" /> <!--inverse_tf will make tag becaome parent frame --> 
+
 
     <arg unless="$(arg debug)" name="launch_prefix" value="" />
     <arg     if="$(arg debug)" name="launch_prefix" value="gdb -ex run --args" />
@@ -39,6 +41,7 @@
         <param name="tag_family" type="str" value="36h11" />
         <param name="projected_optics" type="bool" value="true" />
         <param name="camera_name" value="$(arg camera_name)" />
+        <param name="inverse_tf" type="bool" value="$(arg inverse_tf)" />
         <rosparam param="tag_descriptions">[
               {id: 0, size: 0.163513},
               {id: 1, size: 0.163513, frame_id: a_frame},
