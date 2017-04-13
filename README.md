@@ -3,6 +3,7 @@
 - [Howard Chen](https://github.com/s880367) < s880367@gmail.com >
 , [Intelligent Control System Integration Lab](http://isci.cn.nctu.edu.tw/), NCTU.
 - This package contains the apriltag detection package under ROS indigo for camera in ISCI lab.
+- Originally forked from [VTAstrobotics/apriltags_ros](https://github.com/VTAstrobotics/apriltags_ros)
 
 ## Installation
 ```
